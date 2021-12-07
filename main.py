@@ -80,24 +80,13 @@ def enkripsi(k, clear):
     return result
 
 def dekripsi(k, clear):
-    Alpabeth1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-    #Alpabeth2 = "abcdefghijklmnopqrstuvwxyz"
-    clear = decode_triangle(clear)
-
-    for k in range(len(Alpabeth1)):
-
-        for symbol in clear:
-            if symbol in Alpabeth1:
-                num = Alpabeth1.find(symbol)
-                num = num - k
-            if num < 0:
-                num = num + len(Alpabeth1)
-                translated = translated + Alpabeth1[num]
-            else:
-                translated = translated + symbol
-            
-
-    return translated
+    hasil = []
+    for d in clear:
+        clear = (clear-k) % 26
+    
+        hasil.append(clear)
+    return "".join(hasil)
+    clear = decode_triangle
 
 
 #Function triangle encryption
